@@ -17,38 +17,35 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      {/* Add proper spacing for fixed navigation */}
-      <div className="pt-16 lg:pt-20">
-        <div id="hero" className="min-h-screen flex items-center">
-          <Hero />
-        </div>
-        <div id="education" className="py-12 lg:py-20">
-          <Education />
-        </div>
-        <div id="courses" className="py-12 lg:py-20">
-          <Courses />
-        </div>
-        <div id="olympiad" className="py-12 lg:py-20">
-          <Olympiad />
-        </div>
-        <div id="experience" className="py-12 lg:py-20">
-          <Experience />
-        </div>
-        <div id="certificates" className="py-12 lg:py-20">
-          <Certificates />
-        </div>
-        <div id="skills" className="py-12 lg:py-20">
-          <Skills />
-        </div>
-        <div id="about" className="py-12 lg:py-20">
-          <About />
-        </div>
-        <div id="contact" className="py-12 lg:py-20">
-          <Contact />
-        </div>
-        <Footer />
-        <GhostAI />
+      <div id="hero">
+        <Hero />
       </div>
+      <div id="education">
+        <Education />
+      </div>
+      <div id="courses">
+        <Courses />
+      </div>
+      <div id="olympiad">
+        <Olympiad />
+      </div>
+      <div id="experience">
+        <Experience />
+      </div>
+      <div id="certificates">
+        <Certificates />
+      </div>
+      <div id="skills">
+        <Skills />
+      </div>
+      <div id="about">
+        <About />
+      </div>
+      <div id="contact">
+        <Contact />
+      </div>
+      <Footer />
+      <GhostAI />
     </div>
   );
 };
