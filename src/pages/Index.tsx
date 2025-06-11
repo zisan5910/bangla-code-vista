@@ -17,35 +17,33 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <main className="pt-16 sm:pt-20">
-        <section id="hero">
-          <Hero />
-        </section>
-        <section id="education">
-          <Education />
-        </section>
-        <section id="courses">
-          <Courses />
-        </section>
-        <section id="olympiad">
-          <Olympiad />
-        </section>
-        <section id="experience">
-          <Experience />
-        </section>
-        <section id="certificates">
-          <Certificates />
-        </section>
-        <section id="skills">
-          <Skills />
-        </section>
-        <section id="about">
-          <About />
-        </section>
-        <section id="contact">
-          <Contact />
-        </section>
-      </main>
+      <div id="hero">
+        <Hero />
+      </div>
+      <div id="education">
+        <Education />
+      </div>
+      <div id="courses">
+        <Courses />
+      </div>
+      <div id="olympiad">
+        <Olympiad />
+      </div>
+      <div id="experience">
+        <Experience />
+      </div>
+      <div id="certificates">
+        <Certificates />
+      </div>
+      <div id="skills">
+        <Skills />
+      </div>
+      <div id="about">
+        <About />
+      </div>
+      <div id="contact">
+        <Contact />
+      </div>
       <Footer />
       <GhostAI />
     </div>
