@@ -56,51 +56,49 @@ const Navigation = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="max-w-6xl mx-auto px-4 py-4">
-        <div className="flex justify-between items-center">
-          <div className="text-xl font-bold text-foreground">
-            Ridoan Zisan
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-6">
-            {navigationItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  activeSection === item.id
-                    ? 'text-primary border-b-2 border-primary'
-                    : 'text-muted-foreground'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-lg border-b border-border shadow-sm">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-3 lg:py-4">
+        <div className="flex justify-center lg:justify-between items-center">
+          {/* Desktop Navigation - Center for smaller screens, left for large */}
+          <div className="hidden md:flex lg:flex-1 justify-center lg:justify-start">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-2 lg:gap-4 xl:gap-6">
+              {navigationItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`text-xs sm:text-sm lg:text-base font-medium px-2 lg:px-3 py-1.5 lg:py-2 rounded-md transition-all duration-200 hover:bg-accent ${
+                    activeSection === item.id
+                      ? 'text-primary bg-primary/10 font-semibold'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Mobile Navigation */}
           <div className="md:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="sm">
-                  <Menu className="h-5 w-5" />
+                <Button variant="outline" size="sm" className="h-9 w-9 p-0">
+                  <Menu className="h-4 w-4" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-72">
-                <div className="flex flex-col space-y-4 mt-8">
-                  <div className="text-lg font-semibold text-foreground mb-4">
+              <SheetContent side="right" className="w-72 sm:w-80">
+                <div className="flex flex-col space-y-3 mt-8">
+                  <div className="text-lg font-semibold text-foreground mb-4 border-b border-border pb-2">
                     Navigation
                   </div>
                   {navigationItems.map((item) => (
                     <button
                       key={item.id}
                       onClick={() => scrollToSection(item.id)}
-                      className={`text-left py-2 px-3 rounded-md transition-colors hover:bg-accent ${
+                      className={`text-left py-3 px-4 rounded-lg transition-all duration-200 font-medium ${
                         activeSection === item.id
-                          ? 'bg-accent text-accent-foreground font-medium'
-                          : 'text-muted-foreground'
+                          ? 'bg-primary text-primary-foreground shadow-sm'
+                          : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
                       }`}
                     >
                       {item.label}
