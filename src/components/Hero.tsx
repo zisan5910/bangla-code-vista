@@ -1,7 +1,6 @@
-
 import { motion } from 'framer-motion';
 import { Element } from 'react-scroll';
-import { Download, FileText } from 'lucide-react';
+import { Download } from 'lucide-react';
 
 interface HeroProps {
   language: 'en' | 'bn';
