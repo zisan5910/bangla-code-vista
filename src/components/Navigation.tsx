@@ -52,12 +52,27 @@ const Navigation = ({
     return colors[id] || 'text-gray-500';
   };
 
+  const getDisplayName = (id: string) => {
+    const names: Record<string, { en: string; bn: string }> = {
+      profile: { en: 'Profile', bn: 'প্রোফাইল' },
+      education: { en: 'Education', bn: 'শিক্ষা' },
+      courses: { en: 'Courses', bn: 'কোর্স' },
+      experience: { en: 'Experience', bn: 'অভিজ্ঞতা' },
+      certificates: { en: 'Certificates', bn: 'সার্টিফিকেট' },
+      skills: { en: 'Skills', bn: 'দক্ষতা' },
+      family: { en: 'Family', bn: 'পরিবার' },
+      contact: { en: 'Contact', bn: 'যোগাযোগ' },
+      'social-links': { en: 'Social', bn: 'সামাজিক' },
+    };
+    return names[id]?.[language] || id.charAt(0).toUpperCase() + id.slice(1);
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{
         y: 0,
-        backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.75)',
+        backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.85)',
         boxShadow: isScrolled ? '0 4px 30px rgba(0, 0, 0, 0.1)' : 'none',
       }}
       transition={{ type: 'spring', stiffness: 300, damping: 25 }}
@@ -122,13 +137,13 @@ const Navigation = ({
                     fontWeight: activeSection === (item.target || item.id) ? 600 : 500
                   }}
                 >
-                  {item.id.charAt(0).toUpperCase() + item.id.slice(1)}
+                  {getDisplayName(item.id)}
                 </motion.span>
               </motion.button>
             ))}
           </div>
 
-          {/* Language Toggle Button with Translate Icon - Updated to match ghost theme */}
+          {/* Language Toggle Button */}
           <motion.button
             whileHover={{ 
               scale: 1.1,
@@ -207,7 +222,7 @@ const Navigation = ({
                       {item.icon}
                     </motion.div>
                     <span className="font-medium text-sm">
-                      {item.id.charAt(0).toUpperCase() + item.id.slice(1)}
+                      {getDisplayName(item.id)}
                     </span>
                   </motion.button>
                 ))}
