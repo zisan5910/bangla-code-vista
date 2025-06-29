@@ -1,3 +1,4 @@
+
 import {
   UserCircle,
   School,
@@ -11,6 +12,8 @@ import {
   FileText,
   Download,
   ScrollText,
+  Search,
+  PenTool,
 } from 'lucide-react';
 
 export {
@@ -26,4 +29,6 @@ export {
   FileText,
   Download,
   ScrollText,
+  Search,
+  PenTool,
 };

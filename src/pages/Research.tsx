@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Element } from 'react-scroll';
-import { BookOpen, Plus, Edit, Trash2, Calendar, User } from 'lucide-react';
+import { BookOpen, Plus, Trash2, Calendar, User } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface ResearchPost {
