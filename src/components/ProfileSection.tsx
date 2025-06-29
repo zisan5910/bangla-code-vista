@@ -1,5 +1,6 @@
+
 import { Element } from 'react-scroll';
-import { Download, ScrollText } from './icons';
+import { Download, ScrollText, Search, FileText } from './icons';
 import { cn } from '../lib/utils';
 import { motion } from 'framer-motion';
 
@@ -94,7 +95,7 @@ const ProfileSection = ({
 
               {/* Action Buttons with subtle hover animations */}
               <motion.div 
-                className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-lg mx-auto lg:mx-0"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -114,6 +115,7 @@ const ProfileSection = ({
                   <Download size={18} />
                   {content[language].downloadCV}
                 </motion.a>
+                
                 <motion.button
                   onClick={() => scrollToSection('certificates')}
                   className={cn(
@@ -127,6 +129,36 @@ const ProfileSection = ({
                 >
                   <ScrollText size={18} />
                   {content[language].certifications}
+                </motion.button>
+                
+                <motion.button
+                  onClick={() => scrollToSection('research')}
+                  className={cn(
+                    'px-6 py-2 rounded-md font-medium flex items-center justify-center gap-2',
+                    'bg-white/90 border border-indigo-500 text-indigo-700',
+                    'hover:bg-indigo-50 transition-colors',
+                    'backdrop-blur-sm'
+                  )}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Search size={18} />
+                  {language === 'en' ? 'Research' : 'গবেষণা'}
+                </motion.button>
+                
+                <motion.button
+                  onClick={() => scrollToSection('blog')}
+                  className={cn(
+                    'px-6 py-2 rounded-md font-medium flex items-center justify-center gap-2',
+                    'bg-white/90 border border-purple-500 text-purple-700',
+                    'hover:bg-purple-50 transition-colors',
+                    'backdrop-blur-sm'
+                  )}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <FileText size={18} />
+                  {language === 'en' ? 'Blog' : 'ব্লগ'}
                 </motion.button>
               </motion.div>
             </motion.div>
