@@ -1,9 +1,9 @@
 
 import { useState, useEffect } from 'react';
 import { Element, scroller } from 'react-scroll';
-import { UserCircle, School, BookOpen, Briefcase, FileBadge, Code, HeartHandshake, Mail, Share2, Search, FileText } from 'lucide-react';
+import { UserCircle, School, BookOpen, Briefcase, FileBadge, Code, HeartHandshake, Mail, Share2 } from 'lucide-react';
 
-// Import components
+// Import components in alphabetical order
 import CertificateSection from './components/CertificateSection';
 import Contact from './components/Contact';
 import Courses from './components/Courses';
@@ -12,10 +12,9 @@ import Experience from './components/Experience';
 import FloatingMenu from './components/FloatingMenu';
 import Footer from './components/Footer';
 import Information from './components/Information';
+import InstallPWA from './components/InstallPWA';
 import Navigation from './components/Navigation';
 import ProfileSection from './components/ProfileSection';
-import Research from './components/Research';
-import Blog from './components/Blog';
 import Skill from './components/Skill';
 
 // Import data
@@ -24,7 +23,6 @@ import { content, certificates } from './data/content';
 function App() {
   const [language, setLanguage] = useState<'en' | 'bn'>('en');
   const [activeSection, setActiveSection] = useState<string>('profile');
-  const [currentPage, setCurrentPage] = useState<'home' | 'research' | 'blog'>('home');
   const [age, setAge] = useState<number>(0);
 
   // Calculate age on component mount and update daily
@@ -55,8 +53,6 @@ function App() {
     { id: 'experience', icon: <Briefcase size={20} /> },
     { id: 'certificates', icon: <FileBadge size={20} /> },
     { id: 'skills', icon: <Code size={20} /> },
-    { id: 'research', icon: <Search size={20} />, isPage: true },
-    { id: 'blog', icon: <FileText size={20} />, isPage: true },
     { id: 'family', icon: <HeartHandshake size={20} /> },
     { id: 'contact', icon: <Mail size={20} /> },
     { id: 'social-links', icon: <Share2 size={20} />, target: 'footer' }
@@ -64,54 +60,13 @@ function App() {
 
   // Smooth scrolling handler
   const scrollToSection = (section: string) => {
-    const navItem = navigationItems.find(item => item.id === section);
-    
-    if (navItem?.isPage) {
-      setCurrentPage(section as 'research' | 'blog');
-      setActiveSection(section);
-    } else {
-      setCurrentPage('home');
-      scroller.scrollTo(section, {
-        duration: 800,
-        smooth: true,
-        offset: -64,
-      });
-      setActiveSection(section);
-    }
+    scroller.scrollTo(section, {
+      duration: 800,
+      smooth: true,
+      offset: -64,
+    });
+    setActiveSection(section);
   };
-
-  // Render different pages based on currentPage state
-  if (currentPage === 'research') {
-    return (
-      <div className="min-h-screen bg-slate-50">
-        <Navigation 
-          navigationItems={navigationItems}
-          activeSection={activeSection}
-          scrollToSection={scrollToSection}
-          language={language}
-          setLanguage={setLanguage}
-        />
-        <Research language={language} />
-        <FloatingMenu />
-      </div>
-    );
-  }
-
-  if (currentPage === 'blog') {
-    return (
-      <div className="min-h-screen bg-slate-50">
-        <Navigation 
-          navigationItems={navigationItems}
-          activeSection={activeSection}
-          scrollToSection={scrollToSection}
-          language={language}
-          setLanguage={setLanguage}
-        />
-        <Blog language={language} />
-        <FloatingMenu />
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -123,6 +78,9 @@ function App() {
         language={language}
         setLanguage={setLanguage}
       />
+
+      {/* PWA Component (disabled) */}
+      <InstallPWA language={language} />
 
       {/* Profile Section */}
       <ProfileSection
