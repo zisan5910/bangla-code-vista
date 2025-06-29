@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Element, scroller } from 'react-scroll';
-import { UserCircle, School, BookOpen, Briefcase, FileBadge, Code, HeartHandshake, Mail, Share2 } from 'lucide-react';
+import { UserCircle, School, BookOpen, Briefcase, FileBadge, Code, HeartHandshake, Mail, Share2, Search, FileText } from 'lucide-react';
 
 // Import components in alphabetical order
 import CertificateSection from './components/CertificateSection';
@@ -12,9 +12,10 @@ import Experience from './components/Experience';
 import FloatingMenu from './components/FloatingMenu';
 import Footer from './components/Footer';
 import Information from './components/Information';
-import InstallPWA from './components/InstallPWA';
 import Navigation from './components/Navigation';
 import ProfileSection from './components/ProfileSection';
+import Research from './components/Research';
+import Blog from './components/Blog';
 import Skill from './components/Skill';
 
 // Import data
@@ -53,6 +54,8 @@ function App() {
     { id: 'experience', icon: <Briefcase size={20} /> },
     { id: 'certificates', icon: <FileBadge size={20} /> },
     { id: 'skills', icon: <Code size={20} /> },
+    { id: 'research', icon: <Search size={20} /> },
+    { id: 'blog', icon: <FileText size={20} /> },
     { id: 'family', icon: <HeartHandshake size={20} /> },
     { id: 'contact', icon: <Mail size={20} /> },
     { id: 'social-links', icon: <Share2 size={20} />, target: 'footer' }
@@ -78,9 +81,6 @@ function App() {
         language={language}
         setLanguage={setLanguage}
       />
-
-      {/* PWA Component (disabled) */}
-      <InstallPWA language={language} />
 
       {/* Profile Section */}
       <ProfileSection
@@ -117,6 +117,16 @@ function App() {
           {/* Skills Section */}
           <Element name="skills">
             <Skill language={language} />
+          </Element>
+
+          {/* Research Section */}
+          <Element name="research">
+            <Research language={language} />
+          </Element>
+
+          {/* Blog Section */}
+          <Element name="blog">
+            <Blog language={language} />
           </Element>
 
           {/* Family Information Section */}
