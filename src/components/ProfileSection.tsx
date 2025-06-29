@@ -1,5 +1,6 @@
+
 import { Element } from 'react-scroll';
-import { Download, ScrollText } from './icons';
+import { Download, ScrollText, Search, PenTool } from './icons';
 import { cn } from '../lib/utils';
 import { motion } from 'framer-motion';
 
@@ -127,6 +128,34 @@ const ProfileSection = ({
                 >
                   <ScrollText size={18} />
                   {content[language].certifications}
+                </motion.button>
+                <motion.button
+                  onClick={() => scrollToSection('research')}
+                  className={cn(
+                    'px-6 py-2 rounded-md font-medium flex items-center justify-center gap-2',
+                    'bg-white/90 border border-blue-500 text-blue-600',
+                    'hover:bg-blue-50 transition-colors',
+                    'backdrop-blur-sm'
+                  )}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Search size={18} />
+                  {language === 'en' ? 'Research' : 'গবেষণা'}
+                </motion.button>
+                <motion.button
+                  onClick={() => scrollToSection('blog')}
+                  className={cn(
+                    'px-6 py-2 rounded-md font-medium flex items-center justify-center gap-2',
+                    'bg-white/90 border border-purple-500 text-purple-600',
+                    'hover:bg-purple-50 transition-colors',
+                    'backdrop-blur-sm'
+                  )}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <PenTool size={18} />
+                  {language === 'en' ? 'Blog' : 'ব্লগ'}
                 </motion.button>
               </motion.div>
             </motion.div>

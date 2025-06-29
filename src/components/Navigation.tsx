@@ -14,6 +14,7 @@ interface NavigationProps {
   scrollToSection: (section: string) => void;
   language: 'en' | 'bn';
   setLanguage: (lang: 'en' | 'bn') => void;
+  currentPage?: string;
 }
 
 const Navigation = ({
@@ -22,6 +23,7 @@ const Navigation = ({
   scrollToSection,
   language,
   setLanguage,
+  currentPage = 'home',
 }: NavigationProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -47,6 +49,8 @@ const Navigation = ({
       skills: 'text-purple-500',
       family: 'text-pink-500',
       contact: 'text-cyan-500',
+      research: 'text-blue-600',
+      blog: 'text-purple-600',
       'social-links': 'text-teal-500',
     };
     return colors[id] || 'text-gray-500';
@@ -62,9 +66,17 @@ const Navigation = ({
       skills: { en: 'Skills', bn: 'দক্ষতা' },
       family: { en: 'Family', bn: 'পরিবার' },
       contact: { en: 'Contact', bn: 'যোগাযোগ' },
+      research: { en: 'Research', bn: 'গবেষণা' },
+      blog: { en: 'Blog', bn: 'ব্লগ' },
       'social-links': { en: 'Social', bn: 'সামাজিক' },
     };
     return names[id]?.[language] || id.charAt(0).toUpperCase() + id.slice(1);
+  };
+
+  const isActive = (id: string) => {
+    if (id === 'research' && currentPage === 'research') return true;
+    if (id === 'blog' && currentPage === 'blog') return true;
+    return activeSection === (id === 'social-links' ? 'footer' : id) && currentPage === 'home';
   };
 
   return (
@@ -117,14 +129,14 @@ const Navigation = ({
                 onClick={() => scrollToSection(item.target || item.id)}
                 className={cn(
                   'flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200',
-                  activeSection === (item.target || item.id)
+                  isActive(item.id)
                     ? 'bg-gray-100/80 text-gray-900 shadow-sm'
                     : 'text-gray-600 hover:text-gray-900'
                 )}
               >
                 <motion.div
                   animate={{
-                    rotate: activeSection === (item.target || item.id) ? [0, 360] : 0,
+                    rotate: isActive(item.id) ? [0, 360] : 0,
                   }}
                   transition={{ duration: 0.6, ease: "backOut" }}
                   className={cn('w-5 h-5', getIconColor(item.id))}
@@ -134,7 +146,7 @@ const Navigation = ({
                 <motion.span 
                   className="font-medium text-sm"
                   animate={{
-                    fontWeight: activeSection === (item.target || item.id) ? 600 : 500
+                    fontWeight: isActive(item.id) ? 600 : 500
                   }}
                 >
                   {getDisplayName(item.id)}
@@ -207,14 +219,14 @@ const Navigation = ({
                     }}
                     className={cn(
                       'w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200',
-                      activeSection === (item.target || item.id)
+                      isActive(item.id)
                         ? 'bg-gray-100/80 text-gray-900'
                         : 'text-gray-600 hover:bg-gray-100/50 hover:text-gray-900'
                     )}
                   >
                     <motion.div
                       animate={{
-                        rotate: activeSection === (item.target || item.id) ? 360 : 0,
+                        rotate: isActive(item.id) ? 360 : 0,
                       }}
                       transition={{ duration: 0.6 }}
                       className={cn('w-6 h-6', getIconColor(item.id))}
