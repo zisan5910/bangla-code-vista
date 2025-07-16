@@ -1,3 +1,4 @@
+
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
@@ -13,6 +14,8 @@ export default defineConfig({
         short_name: 'UniConverter',
         description: 'Universal Unit Converter',
         theme_color: '#000000',
+        background_color: '#ffffff',
+        display: 'standalone',
         icons: [
           {
             src: 'https://i.postimg.cc/wMPW5PVM/20250717-004001-0000.png',
@@ -33,4 +36,7 @@ export default defineConfig({
       '@': '/src',
     },
   },
+  server: {
+    port: 8080
+  }
 })

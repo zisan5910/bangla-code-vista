@@ -1,0 +1,26 @@
+
+{
+  "name": "UniConverter",
+  "short_name": "UniConverter",
+  "description": "Universal Unit Converter - Convert units offline",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "https://i.postimg.cc/wMPW5PVM/20250717-004001-0000.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://i.postimg.cc/wMPW5PVM/20250717-004001-0000.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
