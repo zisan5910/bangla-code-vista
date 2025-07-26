@@ -12,30 +12,33 @@ import { Notifications } from "./pages/Notifications";
 import { SubjectDetail } from "./pages/SubjectDetail";
 import { PWAInstallPrompt } from "./components/PWAInstallPrompt";
 import { FacebookRedirectPrompt } from "./components/FacebookRedirectPrompt";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <PWAInstallPrompt />
-      <FacebookRedirectPrompt />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/learn" element={<Learn />} />
-          <Route path="/practise" element={<Practise />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/notifications" element={<Notifications />} />
-          <Route path="/subject/:subjectId" element={<SubjectDetail />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <ErrorBoundary>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <PWAInstallPrompt />
+        <FacebookRedirectPrompt />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/learn" element={<Learn />} />
+            <Route path="/practise" element={<Practise />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/notifications" element={<Notifications />} />
+            <Route path="/subject/:subjectId" element={<SubjectDetail />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </ErrorBoundary>
 );
 
 export default App;
