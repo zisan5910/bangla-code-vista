@@ -141,7 +141,98 @@
       <div class="loading-spinner"></div>
     </div>
     
-    <div id="root"></div>
+    <div id="root">
+      <!-- Static fallback content for social media browsers -->
+      <div style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        text-align: center;
+        padding: 20px;
+        z-index: 1;
+      ">
+        <img 
+          src="https://i.postimg.cc/BQP7QDjk/HSCian-20250725-225238-0000.png" 
+          alt="HSCian Logo"
+          style="
+            width: 100px;
+            height: 100px;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+          "
+        />
+        <h1 style="
+          font-size: 32px;
+          font-weight: bold;
+          margin-bottom: 15px;
+          text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        ">HSCian</h1>
+        <p style="
+          font-size: 18px;
+          opacity: 0.95;
+          margin-bottom: 10px;
+          max-width: 350px;
+          line-height: 1.5;
+        ">Complete HSC Learning Package</p>
+        <p style="
+          font-size: 16px;
+          opacity: 0.9;
+          margin-bottom: 30px;
+          max-width: 350px;
+          line-height: 1.4;
+        ">সম্পূর্ণ এইচএসসি শিক্ষা প্যাকেজ</p>
+        
+        <div style="
+          background: rgba(255,255,255,0.15);
+          border: 1px solid rgba(255,255,255,0.25);
+          border-radius: 12px;
+          padding: 20px;
+          margin-bottom: 20px;
+          max-width: 320px;
+        ">
+          <p style="font-size: 14px; margin-bottom: 15px; opacity: 0.9;">
+            ফেসবুক/মেসেঞ্জারে সর্বোত্তম অভিজ্ঞতার জন্য
+          </p>
+          <button onclick="
+            if (navigator.userAgent.includes('FBAN') || navigator.userAgent.includes('FBAV')) {
+              window.open(window.location.href, '_blank');
+            } else {
+              window.location.reload();
+            }
+          " style="
+            width: 100%;
+            padding: 12px 20px;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 10px;
+          ">Chrome-এ খুলুন</button>
+        </div>
+        
+        <p style="
+          font-size: 12px;
+          opacity: 0.8;
+          max-width: 300px;
+          line-height: 1.4;
+        ">
+          বিজ্ঞান, মানবিক ও বাণিজ্য - সকল বিভাগের সিলেবাস, বই ও ক্লাস
+        </p>
+      </div>
+    </div>
     
     <script type="module" src="/src/main.tsx"></script>
     
