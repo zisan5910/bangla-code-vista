@@ -11,6 +11,7 @@ import { Contact } from "./pages/Contact";
 import { Notifications } from "./pages/Notifications";
 import { SubjectDetail } from "./pages/SubjectDetail";
 import { PWAInstallPrompt } from "./components/PWAInstallPrompt";
+import { FacebookRedirectPrompt } from "./components/FacebookRedirectPrompt";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <PWAInstallPrompt />
+      <FacebookRedirectPrompt />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />

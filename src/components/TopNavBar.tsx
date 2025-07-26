@@ -1,6 +1,6 @@
 import { Menu, Bell, Code } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+
 
 interface TopNavBarProps {
   onMenuClick: () => void;
